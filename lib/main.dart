@@ -1,6 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+    apiKey: 'AIzaSyAZvvlvCdI9SnOwqg8qHN8u1GXxscmNsTk',
+    appId: '1:485461131405:android:0fa536a70847bb031a62c4',
+    messagingSenderId: '485461131405',
+    projectId: 'mapflutter-ac326',
+    storageBucket: 'mapflutter-ac326.appspot.com',
+  ));
   runApp(const MyApp());
 }
 
