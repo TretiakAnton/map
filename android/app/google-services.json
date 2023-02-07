@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "485461131405",
+    "project_id": "mapflutter-ac326",
+    "storage_bucket": "mapflutter-ac326.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485461131405:android:0fa536a70847bb031a62c4",
+        "android_client_info": {
+          "package_name": "com.example.map"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485461131405-7pg9jfcoo986lai2300pf9o4pv5ik1ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZvvlvCdI9SnOwqg8qHN8u1GXxscmNsTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485461131405-7pg9jfcoo986lai2300pf9o4pv5ik1ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
