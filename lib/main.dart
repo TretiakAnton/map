@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
-        BlocProvider<MapCubit>(create: (context) => MapCubit()),
+        BlocProvider<MapCubit>(
+            create: (context) => MapCubit()..updateGpsLocation()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
