@@ -10,11 +10,32 @@ class MapCubit extends Cubit<MapState> {
 
   ///default mocked position
   LatLng _gpsLocation = const LatLng(50.450001, 30.523333);
+  CameraPosition _initialPosition = const CameraPosition(
+    target: LatLng(
+      50.450001,
+      30.523333,
+    ),
+    zoom: 11,
+  );
 
   LatLng get gpsLocation => _gpsLocation;
+
+  CameraPosition get initialPosition => _initialPosition;
 
   Future<void> updateGpsLocation() async {
     final currentLocation = await Geolocator.getCurrentPosition();
     _gpsLocation = LatLng(currentLocation.latitude, currentLocation.longitude);
+    await updatePosition();
+    emit(MapUpdates());
+  }
+
+  Future<void> updatePosition() async {
+    _initialPosition = CameraPosition(
+        target: LatLng(
+          _gpsLocation.latitude,
+          _gpsLocation.longitude,
+        ),
+        zoom: 15);
+    emit(MapUpdates());
   }
 }

@@ -11,7 +11,7 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  late final CameraPosition initialPosition;
+  GoogleMapController? mapController;
   Set<Marker> _markers = {};
 
   @override
@@ -23,22 +23,32 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     final bloc = context.read<MapCubit>();
     return Scaffold(
-      body: GoogleMap(
-        myLocationEnabled: false,
-        zoomGesturesEnabled: true,
-        rotateGesturesEnabled: false,
-        compassEnabled: false,
-        myLocationButtonEnabled: false,
-        mapToolbarEnabled: false,
-        zoomControlsEnabled: false,
-        initialCameraPosition: CameraPosition(
-          target: LatLng(
-            bloc.gpsLocation.latitude,
-            bloc.gpsLocation.longitude,
-          ),
-          zoom: 12,
-        ),
-        //markers: _markers,
+      body: BlocBuilder<MapCubit, MapState>(
+        builder: (context, state) {
+          return GoogleMap(
+            myLocationEnabled: false,
+            zoomGesturesEnabled: true,
+            rotateGesturesEnabled: false,
+            compassEnabled: false,
+            myLocationButtonEnabled: false,
+            mapToolbarEnabled: false,
+            zoomControlsEnabled: false,
+            initialCameraPosition: bloc.initialPosition,
+            onMapCreated: (controller) {
+              setState(() {
+                mapController = controller;
+              });
+            },
+            //markers: _markers,
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          mapController?.animateCamera(
+              CameraUpdate.newCameraPosition(bloc.initialPosition));
+        },
+        child: const Icon(Icons.location_searching),
       ),
     );
   }
