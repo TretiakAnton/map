@@ -1,11 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:location/location.dart';
 import 'package:map/logic/login_bloc/login_cubit.dart';
 import 'package:map/logic/map_bloc/map_cubit.dart';
 import 'package:map/screens/login_screen.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       options: const FirebaseOptions(
@@ -15,6 +16,11 @@ void main() async {
     projectId: 'mapflutter-ac326',
     storageBucket: 'mapflutter-ac326.appspot.com',
   ));
+  Location location = Location();
+  bool isEnabled = await location.serviceEnabled();
+  if (!isEnabled) {
+    loawait location.requestService();
+  }
   runApp(const MyApp());
 }
 
