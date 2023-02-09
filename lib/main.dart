@@ -19,7 +19,7 @@ Future<void> main() async {
   Location location = Location();
   bool isEnabled = await location.serviceEnabled();
   if (!isEnabled) {
-    loawait location.requestService();
+    await location.requestService();
   }
   runApp(const MyApp());
 }
