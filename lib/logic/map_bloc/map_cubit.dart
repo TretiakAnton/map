@@ -35,7 +35,7 @@ class MapCubit extends Cubit<MapState> {
           _gpsLocation.latitude,
           _gpsLocation.longitude,
         ),
-        zoom: 15);
+        zoom: 16);
     emit(MapUpdates());
   }
 }
