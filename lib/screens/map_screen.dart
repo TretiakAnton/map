@@ -38,7 +38,7 @@ class _MapScreenState extends State<MapScreen> {
           ),
           zoom: 12,
         ),
-        markers: _markers,
+        //markers: _markers,
       ),
     );
   }
