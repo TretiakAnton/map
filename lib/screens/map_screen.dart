@@ -13,7 +13,7 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
-  Set<Marker> _markers = {};
+  //Set<Marker> _markers = {};
 
   @override
   initState() {
